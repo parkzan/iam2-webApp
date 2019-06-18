@@ -1,0 +1,109 @@
+<div class="page-main">
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        System
+        <small>Manage System</small>
+      </h1>
+    </section>
+    <section class="content">
+      <div class="page-system">
+        <div class="row" style="margin-bottom: 2%;">
+          <div class="form-group">
+            <div class="col-sm-12 col-md-12 pull-right ">
+              <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#modelAddSystem" (click)="addSystem()"> Add
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-lg-4 col-xs-6 col-md-6" *ngFor="let resultSystem of resultSystem">
+            <div class="info-box">
+              <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+              <div class="info-box-content">
+                <div class="box-setting pull-right">
+                  <a data-toggle="modal" class="btn btn-box-tool" data-target="#modelAddSystem"
+                    (click)="editSystem(resultSystem)"><i class="fa fa-edit icon-custom"></i></a>
+                  <a (click)="delSystem(resultSystem)" class="btn btn-box-tool"><i class="fa fa-trash icon-custom"></i></a>
+
+                  <div class="dropdown">
+
+                    <a class="dropdown-toggle btn btn-box-tool" data-toggle="dropdown"><i
+                        class="fa fa-gear icon-custom"></i></a>
+
+                    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                      <li><a [routerLink]="['/role',resultSystem.systemId]"><i class="fa fa-user-secret"></i>Role</a></li>
+                      <li class="divider"></li>
+                      <li><a routerLink="/object"><i class="fa fa-object-ungroup"></i>Object</a></li>
+                    </ul>
+
+                  </div>
+
+                </div>
+
+
+                <span class="info-box-text">{{resultSystem.systemName}}</span>
+                <span class="info-box-number">{{resultSystem.systemCode}}</span>
+
+                <ul class="list-inline box-controls">
+                  <li><a class="btn btn-default btn-sm" role="button" [routerLink]="['/user']" routerLinkActive="router-link-active" ><i class="fa fa-user"></i> User</a></li>
+                  <li><a class="btn btn-default btn-sm" role="button"><i class="fa fa-sitemap"></i> Role Object</a></li>
+                </ul>
+
+              </div><!-- /.info-box-contentt -->
+
+            </div>
+          </div> <!-- end list system-->
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="modal fade" id="modelAddSystem">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">System</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="box-body">
+              <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Name" [formControl]="name">
+                    </div>
+              </div>
+              <div class="form-group">
+                <label for="inputCode" class="col-sm-2 control-label">Code</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="Code" [formControl]="code">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputName" class="col-sm-2 control-label">Icon</label>
+                <div class="col-sm-10">
+                  <select class="form-control" [formControl] ="icon">
+                    <option><i class="fa fa-email"></i>icon 1</option>
+                    <option>icon 2</option>
+                    <option>icon 3</option>
+                    <option>icon 4</option>
+                    <option>icon 5</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="saveSystem()">Save</button>
+          <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<app-loading></app-loading>

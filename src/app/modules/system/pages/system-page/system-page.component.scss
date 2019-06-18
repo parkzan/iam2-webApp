@@ -1,0 +1,37 @@
+.pageSystem{
+    min-height: 100%;
+    height: 100vh;
+}
+.box-setting{
+   margin-top: 1%;
+   float: right;
+}
+.icon-custom{
+    margin-right:5px;
+    font-size: 18px;
+}
+.icon-wall{
+     font-size: 50px; 
+}
+.wall-icons{
+    top:0px;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+.dropdown-menu {
+    background-color: #f5f7f8;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 5px 5px;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.page-system {
+    .box-controls {
+        margin-bottom: 0;
+    }
+}
