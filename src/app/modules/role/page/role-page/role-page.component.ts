@@ -7,6 +7,7 @@ import { RoleAdd } from 'src/app/shared/models/request/role/role-add';
 import Swal from 'sweetalert2';
 import { VirtualTimeScheduler } from 'rxjs';
 import { RoleEdit } from 'src/app/shared/models/request/role/role-edit';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 declare var $:any;
 @Component({
   selector: 'app-role-page',
@@ -28,10 +29,12 @@ export class RolePageComponent implements OnInit {
     private roleEditService:RoleServiceService,
     private roleView:RoleView,
     private roleAdd:RoleAdd,
-    private roleEdit:RoleEdit
+    private roleEdit:RoleEdit,
+    private ngxService:NgxUiLoaderService
   ) {}
  
   ngOnInit() {
+    this.ngxService.start();
     this.getIdSystem();
     this.doViewRole();
   }
@@ -41,7 +44,7 @@ export class RolePageComponent implements OnInit {
      .subscribe(
       res => this.resultRole = res
     );
-    
+    this.ngxService.stop();
   }
   addRole(){
     this.clearFormInput();
